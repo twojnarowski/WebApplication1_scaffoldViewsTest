@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1_scaffoldViewsTest.Data;
 using WebApplication1_scaffoldViewsTest.Models;
 
-namespace WebApplication1_scaffoldViewsTest
+namespace WebApplication1_scaffoldViewsTest.Controllers
 {
     public class TestClassesController : Controller
     {
@@ -22,9 +22,9 @@ namespace WebApplication1_scaffoldViewsTest
         // GET: TestClasses
         public async Task<IActionResult> Index()
         {
-              return _context.TestClass != null ? 
-                          View(await _context.TestClass.ToListAsync()) :
-                          Problem("Entity set 'WebApplication1_scaffoldViewsTestContext.TestClass'  is null.");
+            return _context.TestClass != null ?
+                        View(await _context.TestClass.ToListAsync()) :
+                        Problem("Entity set 'WebApplication1_scaffoldViewsTestContext.TestClass'  is null.");
         }
 
         // GET: TestClasses/Details/5
@@ -150,14 +150,14 @@ namespace WebApplication1_scaffoldViewsTest
             {
                 _context.TestClass.Remove(testClass);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TestClassExists(int id)
         {
-          return (_context.TestClass?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.TestClass?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
